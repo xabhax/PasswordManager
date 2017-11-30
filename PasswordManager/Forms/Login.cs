@@ -16,5 +16,27 @@ namespace PasswordManager.Forms
         {
             InitializeComponent();
         }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            // Login was not successfull
+            this.Close();
+        }
+
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+            // Login was succesfull
+            if (Crypto.CheckLoginCredentials(UsernameInput.Text, PasswordInput.Text) == true)
+            {
+                DialogResult = DialogResult.OK;
+            }
+
+            // Wrong password, close program
+            else
+            {
+                this.Close();
+            }
+
+        }
     }
 }
