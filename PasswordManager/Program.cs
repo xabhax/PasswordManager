@@ -24,18 +24,18 @@ namespace PasswordManager
                 Application.Run(new Settings());
             }
 
-            else
-            {
-                // Setup to show login form
-                var loginForm = new Login();
-                result = loginForm.ShowDialog();
-
-                if (result == DialogResult.OK)
-                {
-                    // Login was successful
-                    Application.Run(new Main());
-                }
-            }
+ //           else
+ //           {
+ //               // Setup to show login form
+ //               var loginForm = new Login();
+ //               result = loginForm.ShowDialog();
+ //
+ //               if (result == DialogResult.OK)
+ //               {
+ //                   // Login was successful
+                    Application.Run(new AddAccount());
+ //               }
+ //           }
         }
     }
 }
