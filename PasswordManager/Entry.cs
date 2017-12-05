@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PasswordManager
 {
     [Serializable]
-    public class Entry
+    public partial class Entry : Main
     {
         public string Username;
         public string Password;
