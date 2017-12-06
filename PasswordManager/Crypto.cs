@@ -11,11 +11,6 @@ namespace PasswordManager
 {
     public class Crypto
     {
-        /// <summary>
-        /// Encrypt text
-        /// </summary>
-        /// <param name="clearText">txt you want to encrypt</param>
-        /// <returns></returns>
         public static string EncryptText(string clearText)
         {
             string EncryptionKey = "Ab41Dyy2Hm1dR98hEl";
@@ -38,11 +33,6 @@ namespace PasswordManager
             return clearText;
         }
 
-        /// <summary>
-        /// Decrypt text
-        /// </summary>
-        /// <param name="cipherText">text you want to decrypt</param>
-        /// <returns></returns>
         public static string DecryptText(string cipherText)
         {
             string EncryptionKey = "Ab41Dyy2Hm1dR98hEl";
@@ -66,12 +56,6 @@ namespace PasswordManager
             return cipherText;
         }
 
-        /// <summary>
-        /// Checks passed arguments against stored encrypted strings in registry
-        /// </summary>
-        /// <param name="Username">plain text username</param>
-        /// <param name="Password">plain text passwod</param>
-        /// <returns></returns>
         public static bool CheckLoginCredentials(string Username, string Password)
         {
             string x = DecryptText(Registry.GetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "Username", null).ToString());

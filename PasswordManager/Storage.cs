@@ -17,6 +17,7 @@ namespace PasswordManager
                 serializer.Serialize(stream, list);
             }
         }
+
         public static List<Entry> DeserializeEntries(string fileName)
         {
             var tmp = new List<Entry>();
