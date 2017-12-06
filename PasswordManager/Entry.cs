@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace PasswordManager
 {
     [Serializable]
-    public partial class Entry : Main
+    public class Entry
     {
         public string Username;
         public string Password;

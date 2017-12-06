@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace PasswordManager
 {
-    public partial class Storage : Main
+    public class Storage
     {
         public static void SerializeEntries(List<Entry> list, string fileName)
         {

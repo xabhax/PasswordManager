@@ -15,17 +15,23 @@ namespace PasswordManager
     public partial class Main : Form
     {
         string DataFile = "C:\\users\\xabha\\Desktop\\PasswordDatabase.txt";
+        List<Entry> Entries = new List<Entry>();
 
         public Main()
         {
             InitializeComponent();
-            List<Entry> Entries = Storage.DeserializeEntries(DataFile);
+            RefreshListview();
+        }
+
+        public void RefreshListview()
+        {
+            listView.Items.Clear();
+            Entries = Storage.DeserializeEntries(DataFile);
 
             for (int i = 0; i < Entries.Count; i++)
             {
                 ListViewItem itemName = new ListViewItem(Entries[i].Website);
-                itemName.Tag = i;
-                itemName.SubItems.Add(Entries[i].Website);
+
                 itemName.SubItems.Add(Entries[i].Username);
                 itemName.SubItems.Add(Entries[i].Password);
                 listView.Items.Add(itemName);
@@ -34,12 +40,18 @@ namespace PasswordManager
 
         private void GeneratePassword_Click(object sender, EventArgs e)
         {
+            string GeneratedPassword = Guid.NewGuid().ToString("N").ToLower()
+                                       .Replace("1", "").Replace("o", "").Replace("0", "")
+                                       .Substring(0, 10);
 
+            textBox3.Text = GeneratedPassword;
         }
 
         private void AddAccount_Click(object sender, EventArgs e)
         {
-
+            Entries.Add(new Entry(textBox2.Text, textBox3.Text, textBox1.Text));
+            Storage.SerializeEntries(Entries, DataFile);
+            RefreshListview();
         }
     }
 }
