@@ -37,7 +37,7 @@ namespace PasswordManager
             ViewAccountsPanel.Visible = false;
             AddAcountPanel.Visible = false;
         }
-
+        #region Button Click Events
         private void AddAccountButton_Click(object sender, EventArgs e)
         {
             ClearAllMainPanels();
@@ -60,7 +60,7 @@ namespace PasswordManager
             ClearAllMainPanels();
             ClearAllButtonSelectPanels();
             EditAccountButtonSelected.Visible = true;
-            AddAcountPanel.Visible = true;
+            //EditAccountsPanel.Visible = true;
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
@@ -94,6 +94,9 @@ namespace PasswordManager
             QuitButtonSelected.Visible = true;
             AddAcountPanel.Visible = true;
         }
+        #endregion
+
+        #region ViewAccounts Panel
         private void RefreshListview()
         {
             listView.Items.Clear();
@@ -108,19 +111,35 @@ namespace PasswordManager
                 listView.Items.Add(itemName);
             }
         }
+        #endregion
+
+        #region AddAccounts Panel
         private void GeneratePassword_Click(object sender, EventArgs e)
         {
             string GeneratedPassword = Guid.NewGuid().ToString("N").ToLower()
                                        .Replace("1", "").Replace("o", "").Replace("0", "")
-                                       .Substring(0, 10);
+                                       .Replace("m", "!").Substring(0, 25);
 
-            textBox3.Text = GeneratedPassword;
+            PasswordInput.Text = GeneratedPassword;
+            Password2Input.Text = GeneratedPassword;
         }
 
         private void AddAccount_Click(object sender, EventArgs e)
         {
-            Entries.Add(new Entry(textBox2.Text, textBox3.Text, textBox1.Text));
+
+            Entries.Add(new Entry(UsernameInput.Text, PasswordInput.Text, WebsiteInput.Text));
             Storage.SerializeEntries(Entries, DataFile);
+            MessageBox.Show("Account Added", "Password Manager");
+            AddAcountPanel.Visible = false;
+            ViewAccountsPanel.Visible = true;
         }
+        private void PasswordInput_TextChanged(object sender, EventArgs e)
+        {
+            int x = PasswordStregth.Instance.GetPasswordScore(UsernameInput.Text, PasswordInput.Text);
+            string str = PasswordStregth.Instance.GetPasswordStrength(UsernameInput.Text, PasswordInput.Text);
+            Color col = PasswordStregth.Instance.GetPasswordColor(UsernameInput.Text, PasswordInput.Text);
+            PasswordScore.Text = (str);
+        }
+        #endregion
     }
 }

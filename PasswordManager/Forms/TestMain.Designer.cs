@@ -51,13 +51,21 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.AddAcountPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.WebsiteInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.UsernameInput = new System.Windows.Forms.TextBox();
+            this.PasswordInput = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Password2Input = new System.Windows.Forms.TextBox();
+            this.AddAccount = new System.Windows.Forms.Button();
+            this.GeneratePassword = new System.Windows.Forms.Button();
+            this.PasswordScore = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.buttonPanel.SuspendLayout();
             this.ViewAccountsPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.AddAcountPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -172,7 +180,7 @@
             // 
             this.ViewAccountsPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ViewAccountsPanel.Controls.Add(this.listView);
-            this.ViewAccountsPanel.Location = new System.Drawing.Point(224, 1);
+            this.ViewAccountsPanel.Location = new System.Drawing.Point(48, 491);
             this.ViewAccountsPanel.Name = "ViewAccountsPanel";
             this.ViewAccountsPanel.Size = new System.Drawing.Size(810, 564);
             this.ViewAccountsPanel.TabIndex = 2;
@@ -279,6 +287,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(-2, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(227, 94);
@@ -286,11 +296,17 @@
             // 
             // AddAcountPanel
             // 
-            this.AddAcountPanel.Controls.Add(this.textBox3);
-            this.AddAcountPanel.Controls.Add(this.textBox2);
+            this.AddAcountPanel.Controls.Add(this.PasswordScore);
+            this.AddAcountPanel.Controls.Add(this.AddAccount);
+            this.AddAcountPanel.Controls.Add(this.GeneratePassword);
+            this.AddAcountPanel.Controls.Add(this.Password2Input);
+            this.AddAcountPanel.Controls.Add(this.label4);
+            this.AddAcountPanel.Controls.Add(this.ViewAccountsPanel);
+            this.AddAcountPanel.Controls.Add(this.PasswordInput);
+            this.AddAcountPanel.Controls.Add(this.UsernameInput);
             this.AddAcountPanel.Controls.Add(this.label3);
             this.AddAcountPanel.Controls.Add(this.label2);
-            this.AddAcountPanel.Controls.Add(this.textBox1);
+            this.AddAcountPanel.Controls.Add(this.WebsiteInput);
             this.AddAcountPanel.Controls.Add(this.label1);
             this.AddAcountPanel.Location = new System.Drawing.Point(224, 1);
             this.AddAcountPanel.Name = "AddAcountPanel";
@@ -300,23 +316,23 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(166, 117);
+            this.label1.Location = new System.Drawing.Point(176, 117);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Website";
             // 
-            // textBox1
+            // WebsiteInput
             // 
-            this.textBox1.Location = new System.Drawing.Point(271, 112);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(269, 22);
-            this.textBox1.TabIndex = 1;
+            this.WebsiteInput.Location = new System.Drawing.Point(271, 115);
+            this.WebsiteInput.Name = "WebsiteInput";
+            this.WebsiteInput.Size = new System.Drawing.Size(269, 22);
+            this.WebsiteInput.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(166, 155);
+            this.label2.Location = new System.Drawing.Point(162, 162);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 17);
             this.label2.TabIndex = 2;
@@ -325,25 +341,90 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(166, 202);
+            this.label3.Location = new System.Drawing.Point(166, 207);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 17);
             this.label3.TabIndex = 3;
             this.label3.Text = "Password";
             // 
-            // textBox2
+            // UsernameInput
             // 
-            this.textBox2.Location = new System.Drawing.Point(271, 152);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(269, 22);
-            this.textBox2.TabIndex = 4;
+            this.UsernameInput.Location = new System.Drawing.Point(271, 159);
+            this.UsernameInput.Name = "UsernameInput";
+            this.UsernameInput.Size = new System.Drawing.Size(269, 22);
+            this.UsernameInput.TabIndex = 4;
             // 
-            // textBox3
+            // PasswordInput
             // 
-            this.textBox3.Location = new System.Drawing.Point(271, 199);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(269, 22);
-            this.textBox3.TabIndex = 5;
+            this.PasswordInput.Location = new System.Drawing.Point(271, 204);
+            this.PasswordInput.Name = "PasswordInput";
+            this.PasswordInput.Size = new System.Drawing.Size(269, 22);
+            this.PasswordInput.TabIndex = 5;
+            this.PasswordInput.TextChanged += new System.EventHandler(this.PasswordInput_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(105, 252);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(130, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Re-Enter Password";
+            // 
+            // Password2Input
+            // 
+            this.Password2Input.Location = new System.Drawing.Point(271, 249);
+            this.Password2Input.Name = "Password2Input";
+            this.Password2Input.Size = new System.Drawing.Size(269, 22);
+            this.Password2Input.TabIndex = 7;
+            // 
+            // AddAccount
+            // 
+            this.AddAccount.Location = new System.Drawing.Point(375, 366);
+            this.AddAccount.Name = "AddAccount";
+            this.AddAccount.Size = new System.Drawing.Size(165, 28);
+            this.AddAccount.TabIndex = 10;
+            this.AddAccount.Text = "Add Account";
+            this.AddAccount.UseVisualStyleBackColor = true;
+            this.AddAccount.Click += new System.EventHandler(this.AddAccount_Click);
+            // 
+            // GeneratePassword
+            // 
+            this.GeneratePassword.Location = new System.Drawing.Point(375, 332);
+            this.GeneratePassword.Name = "GeneratePassword";
+            this.GeneratePassword.Size = new System.Drawing.Size(165, 28);
+            this.GeneratePassword.TabIndex = 9;
+            this.GeneratePassword.Text = "Generate Password";
+            this.GeneratePassword.UseVisualStyleBackColor = true;
+            this.GeneratePassword.Click += new System.EventHandler(this.GeneratePassword_Click);
+            // 
+            // PasswordScore
+            // 
+            this.PasswordScore.Location = new System.Drawing.Point(271, 277);
+            this.PasswordScore.Name = "PasswordScore";
+            this.PasswordScore.Size = new System.Drawing.Size(269, 22);
+            this.PasswordScore.TabIndex = 11;
+            this.PasswordScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(14, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 32);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Password";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(83, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(117, 32);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Manager";
             // 
             // TestMain
             // 
@@ -351,7 +432,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1029, 559);
-            this.Controls.Add(this.ViewAccountsPanel);
             this.Controls.Add(this.AddAcountPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.AddAccountButtonSelected);
@@ -362,10 +442,14 @@
             this.Controls.Add(this.LoadDatabaseButtonSelected);
             this.Controls.Add(this.EditAccountButtonSelected);
             this.Controls.Add(this.SettingsButtonSelected);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TestMain";
             this.Text = "Password Manager";
             this.buttonPanel.ResumeLayout(false);
             this.ViewAccountsPanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.AddAcountPanel.ResumeLayout(false);
             this.AddAcountPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -395,11 +479,18 @@
         private System.Windows.Forms.Panel AddAccountButtonSelected;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel AddAcountPanel;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox PasswordInput;
+        private System.Windows.Forms.TextBox UsernameInput;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox WebsiteInput;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox Password2Input;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox PasswordScore;
+        public System.Windows.Forms.Button AddAccount;
+        public System.Windows.Forms.Button GeneratePassword;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
