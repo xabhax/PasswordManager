@@ -1,6 +1,6 @@
 ﻿namespace PasswordManager
 {
-    partial class TestMain
+    partial class MainDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -49,20 +49,20 @@
             this.QuitButtonSelected = new System.Windows.Forms.Panel();
             this.AddAccountButtonSelected = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.AddAcountPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.WebsiteInput = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.UsernameInput = new System.Windows.Forms.TextBox();
-            this.PasswordInput = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Password2Input = new System.Windows.Forms.TextBox();
+            this.PasswordScore = new System.Windows.Forms.TextBox();
             this.AddAccount = new System.Windows.Forms.Button();
             this.GeneratePassword = new System.Windows.Forms.Button();
-            this.PasswordScore = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.Password2Input = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.PasswordInput = new System.Windows.Forms.TextBox();
+            this.UsernameInput = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.WebsiteInput = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonPanel.SuspendLayout();
             this.ViewAccountsPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -180,7 +180,7 @@
             // 
             this.ViewAccountsPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ViewAccountsPanel.Controls.Add(this.listView);
-            this.ViewAccountsPanel.Location = new System.Drawing.Point(48, 491);
+            this.ViewAccountsPanel.Location = new System.Drawing.Point(224, 1);
             this.ViewAccountsPanel.Name = "ViewAccountsPanel";
             this.ViewAccountsPanel.Size = new System.Drawing.Size(810, 564);
             this.ViewAccountsPanel.TabIndex = 2;
@@ -197,7 +197,7 @@
             this.listView.GridLines = true;
             this.listView.HideSelection = false;
             this.listView.HoverSelection = true;
-            this.listView.Location = new System.Drawing.Point(24, 42);
+            this.listView.Location = new System.Drawing.Point(26, 29);
             this.listView.MultiSelect = false;
             this.listView.Name = "listView";
             this.listView.ShowItemToolTips = true;
@@ -294,6 +294,26 @@
             this.panel1.Size = new System.Drawing.Size(227, 94);
             this.panel1.TabIndex = 5;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(83, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(117, 32);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Manager";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(14, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 32);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Password";
+            // 
             // AddAcountPanel
             // 
             this.AddAcountPanel.Controls.Add(this.PasswordScore);
@@ -301,7 +321,6 @@
             this.AddAcountPanel.Controls.Add(this.GeneratePassword);
             this.AddAcountPanel.Controls.Add(this.Password2Input);
             this.AddAcountPanel.Controls.Add(this.label4);
-            this.AddAcountPanel.Controls.Add(this.ViewAccountsPanel);
             this.AddAcountPanel.Controls.Add(this.PasswordInput);
             this.AddAcountPanel.Controls.Add(this.UsernameInput);
             this.AddAcountPanel.Controls.Add(this.label3);
@@ -313,70 +332,15 @@
             this.AddAcountPanel.Size = new System.Drawing.Size(810, 564);
             this.AddAcountPanel.TabIndex = 4;
             // 
-            // label1
+            // PasswordScore
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(176, 117);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Website";
-            // 
-            // WebsiteInput
-            // 
-            this.WebsiteInput.Location = new System.Drawing.Point(271, 115);
-            this.WebsiteInput.Name = "WebsiteInput";
-            this.WebsiteInput.Size = new System.Drawing.Size(269, 22);
-            this.WebsiteInput.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(162, 162);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Username";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(166, 207);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 17);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Password";
-            // 
-            // UsernameInput
-            // 
-            this.UsernameInput.Location = new System.Drawing.Point(271, 159);
-            this.UsernameInput.Name = "UsernameInput";
-            this.UsernameInput.Size = new System.Drawing.Size(269, 22);
-            this.UsernameInput.TabIndex = 4;
-            // 
-            // PasswordInput
-            // 
-            this.PasswordInput.Location = new System.Drawing.Point(271, 204);
-            this.PasswordInput.Name = "PasswordInput";
-            this.PasswordInput.Size = new System.Drawing.Size(269, 22);
-            this.PasswordInput.TabIndex = 5;
-            this.PasswordInput.TextChanged += new System.EventHandler(this.PasswordInput_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(105, 252);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Re-Enter Password";
-            // 
-            // Password2Input
-            // 
-            this.Password2Input.Location = new System.Drawing.Point(271, 249);
-            this.Password2Input.Name = "Password2Input";
-            this.Password2Input.Size = new System.Drawing.Size(269, 22);
-            this.Password2Input.TabIndex = 7;
+            this.PasswordScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordScore.Location = new System.Drawing.Point(271, 277);
+            this.PasswordScore.Name = "PasswordScore";
+            this.PasswordScore.ReadOnly = true;
+            this.PasswordScore.Size = new System.Drawing.Size(269, 27);
+            this.PasswordScore.TabIndex = 11;
+            this.PasswordScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // AddAccount
             // 
@@ -398,40 +362,78 @@
             this.GeneratePassword.UseVisualStyleBackColor = true;
             this.GeneratePassword.Click += new System.EventHandler(this.GeneratePassword_Click);
             // 
-            // PasswordScore
+            // Password2Input
             // 
-            this.PasswordScore.Location = new System.Drawing.Point(271, 277);
-            this.PasswordScore.Name = "PasswordScore";
-            this.PasswordScore.Size = new System.Drawing.Size(269, 22);
-            this.PasswordScore.TabIndex = 11;
-            this.PasswordScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Password2Input.Location = new System.Drawing.Point(271, 249);
+            this.Password2Input.Name = "Password2Input";
+            this.Password2Input.Size = new System.Drawing.Size(269, 22);
+            this.Password2Input.TabIndex = 7;
             // 
-            // label5
+            // label4
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(14, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 32);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Password";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(105, 252);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(130, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Re-Enter Password";
             // 
-            // label6
+            // PasswordInput
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(83, 48);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 32);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Manager";
+            this.PasswordInput.Location = new System.Drawing.Point(271, 204);
+            this.PasswordInput.Name = "PasswordInput";
+            this.PasswordInput.Size = new System.Drawing.Size(269, 22);
+            this.PasswordInput.TabIndex = 5;
+            this.PasswordInput.TextChanged += new System.EventHandler(this.PasswordInput_TextChanged);
             // 
-            // TestMain
+            // UsernameInput
+            // 
+            this.UsernameInput.Location = new System.Drawing.Point(271, 159);
+            this.UsernameInput.Name = "UsernameInput";
+            this.UsernameInput.Size = new System.Drawing.Size(269, 22);
+            this.UsernameInput.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(166, 207);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 17);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Password";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(162, 162);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Username";
+            // 
+            // WebsiteInput
+            // 
+            this.WebsiteInput.Location = new System.Drawing.Point(271, 115);
+            this.WebsiteInput.Name = "WebsiteInput";
+            this.WebsiteInput.Size = new System.Drawing.Size(269, 22);
+            this.WebsiteInput.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(176, 117);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Website";
+            // 
+            // MainDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1029, 559);
+            this.Controls.Add(this.ViewAccountsPanel);
             this.Controls.Add(this.AddAcountPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.AddAccountButtonSelected);
@@ -444,7 +446,7 @@
             this.Controls.Add(this.SettingsButtonSelected);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "TestMain";
+            this.Name = "MainDialog";
             this.Text = "Password Manager";
             this.buttonPanel.ResumeLayout(false);
             this.ViewAccountsPanel.ResumeLayout(false);

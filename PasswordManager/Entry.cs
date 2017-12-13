@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 
 namespace PasswordManager
 {
@@ -10,6 +9,15 @@ namespace PasswordManager
         public string Username;
         public string Password;
         public string Website;
+        public string Comment;
+
+        public Entry(string uname, string pword, string site, string comment)
+        {
+            this.Username = uname;
+            this.Password = pword;
+            this.Website = site;
+            this.Comment = comment;
+        }
 
         public Entry(string uname, string pword, string site)
         {
@@ -20,9 +28,6 @@ namespace PasswordManager
 
         public List<Entry> Entries;
 
-        public Entry()
-        {
-            Entries = new List<Entry>();
-        }
+        public Entry() => Entries = new List<Entry>();
     }
 }

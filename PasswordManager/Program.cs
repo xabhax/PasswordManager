@@ -13,7 +13,7 @@ namespace PasswordManager
             DialogResult result;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TestMain());
+            Application.Run(new MainDialog());
         }
     }
 }
