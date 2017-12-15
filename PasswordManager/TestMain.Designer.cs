@@ -63,10 +63,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.WebsiteInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.SettingsPanel = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.buttonPanel.SuspendLayout();
             this.ViewAccountsPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.AddAcountPanel.SuspendLayout();
+            this.SettingsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonPanel
@@ -334,6 +338,7 @@
             // 
             // PasswordScore
             // 
+            this.PasswordScore.Enabled = false;
             this.PasswordScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordScore.Location = new System.Drawing.Point(271, 277);
             this.PasswordScore.Name = "PasswordScore";
@@ -427,12 +432,39 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Website";
             // 
+            // SettingsPanel
+            // 
+            this.SettingsPanel.Controls.Add(this.label7);
+            this.SettingsPanel.Controls.Add(this.textBox1);
+            this.SettingsPanel.Location = new System.Drawing.Point(224, 1);
+            this.SettingsPanel.Name = "SettingsPanel";
+            this.SettingsPanel.Size = new System.Drawing.Size(810, 561);
+            this.SettingsPanel.TabIndex = 4;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(81, 92);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(257, 22);
+            this.textBox1.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(81, 69);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(131, 17);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Master Password";
+            // 
             // MainDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1029, 559);
+            this.Controls.Add(this.SettingsPanel);
             this.Controls.Add(this.ViewAccountsPanel);
             this.Controls.Add(this.AddAcountPanel);
             this.Controls.Add(this.panel1);
@@ -454,11 +486,14 @@
             this.panel1.PerformLayout();
             this.AddAcountPanel.ResumeLayout(false);
             this.AddAcountPanel.PerformLayout();
+            this.SettingsPanel.ResumeLayout(false);
+            this.SettingsPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
         private System.Windows.Forms.Panel buttonPanel;
         private System.Windows.Forms.Button ViewAccountsButton;
         private System.Windows.Forms.Button LoadDatabaseButton;
@@ -494,5 +529,8 @@
         public System.Windows.Forms.Button GeneratePassword;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel SettingsPanel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

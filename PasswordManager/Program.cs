@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using Microsoft.Win32;
-using PasswordManager.Forms;
 
 namespace PasswordManager
 {
@@ -13,7 +12,27 @@ namespace PasswordManager
             DialogResult result;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainDialog());
+
+            // Check to see if registry settings are present
+            if (Registry.GetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "username", null) == null)
+            {
+                Registry.CurrentUser.CreateSubKey("PasswordManager");
+                Application.Run(new MainDialog("Settings"));
+                return;
+            }
+            else
+            {
+                // They are so lets check some credentials
+                var loginForm = new Login();
+                result = loginForm.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    // login was successful
+                    Application.Run(new MainDialog("ViewAccounts"));
+                    return;
+                }
+            }
         }
     }
 }
