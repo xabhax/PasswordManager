@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,17 @@ namespace PasswordManager
             InitializeComponent();
             ClearAllButtonSelectPanels();
             ClearAllMainPanels();
+
+            switch (PanelToShow)
+            {
+                case "AddAcountPanel":
+                    AddAcountPanel.Visible = true;
+                    break;
+
+                case "ViewAccouts":
+                    ViewAccountsPanel.Visible = true;
+                    break;
+            }
         }
 
         private void ClearAllButtonSelectPanels()
@@ -168,6 +180,16 @@ namespace PasswordManager
                     PasswordScore.Text = str;
                     break;
             }
+        }
+        #endregion
+        #region ViewAccounts Panel
+        private void ApplySettingsButton_Click(object sender, EventArgs e)
+        {
+            var tmp = Crypto.Hash(MasterPassword.Text);
+
+            Registry.CurrentUser.CreateSubKey("PasswordManager");
+            Registry.SetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "Password", tmp);
+
         }
         #endregion
     }

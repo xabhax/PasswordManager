@@ -14,7 +14,7 @@ namespace PasswordManager
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Check to see if registry settings are present
-            if (Registry.GetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "username", null) == null)
+            if (Registry.GetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "Password", null) == null)
             {
                 Registry.CurrentUser.CreateSubKey("PasswordManager");
                 Application.Run(new MainDialog("Settings"));

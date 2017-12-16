@@ -64,8 +64,9 @@
             this.WebsiteInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SettingsPanel = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ApplySettingsButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.MasterPassword = new System.Windows.Forms.TextBox();
             this.buttonPanel.SuspendLayout();
             this.ViewAccountsPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -434,19 +435,23 @@
             // 
             // SettingsPanel
             // 
+            this.SettingsPanel.Controls.Add(this.ApplySettingsButton);
             this.SettingsPanel.Controls.Add(this.label7);
-            this.SettingsPanel.Controls.Add(this.textBox1);
+            this.SettingsPanel.Controls.Add(this.MasterPassword);
             this.SettingsPanel.Location = new System.Drawing.Point(224, 1);
             this.SettingsPanel.Name = "SettingsPanel";
             this.SettingsPanel.Size = new System.Drawing.Size(810, 561);
             this.SettingsPanel.TabIndex = 4;
             // 
-            // textBox1
+            // ApplySettingsButton
             // 
-            this.textBox1.Location = new System.Drawing.Point(81, 92);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(257, 22);
-            this.textBox1.TabIndex = 0;
+            this.ApplySettingsButton.Location = new System.Drawing.Point(654, 515);
+            this.ApplySettingsButton.Name = "ApplySettingsButton";
+            this.ApplySettingsButton.Size = new System.Drawing.Size(139, 31);
+            this.ApplySettingsButton.TabIndex = 2;
+            this.ApplySettingsButton.Text = "Apply Settings";
+            this.ApplySettingsButton.UseVisualStyleBackColor = true;
+            this.ApplySettingsButton.Click += new System.EventHandler(this.ApplySettingsButton_Click);
             // 
             // label7
             // 
@@ -457,6 +462,13 @@
             this.label7.Size = new System.Drawing.Size(131, 17);
             this.label7.TabIndex = 1;
             this.label7.Text = "Master Password";
+            // 
+            // MasterPassword
+            // 
+            this.MasterPassword.Location = new System.Drawing.Point(81, 92);
+            this.MasterPassword.Name = "MasterPassword";
+            this.MasterPassword.Size = new System.Drawing.Size(257, 22);
+            this.MasterPassword.TabIndex = 0;
             // 
             // MainDialog
             // 
@@ -531,6 +543,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel SettingsPanel;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox MasterPassword;
+        private System.Windows.Forms.Button ApplySettingsButton;
     }
 }
