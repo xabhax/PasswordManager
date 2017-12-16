@@ -15,25 +15,14 @@ namespace PasswordManager
 {
     public partial class MainDialog : Form
     {
-        string DataFile = "C:\\users\\xabha\\Desktop\\PasswordDatabase.txt";
+        string DataFile = RegistryHelper.Datafile();
         List<Entry> Entries = new List<Entry>();
 
-        public MainDialog(string PanelToShow)
+        public MainDialog()
         {
             InitializeComponent();
             ClearAllButtonSelectPanels();
             ClearAllMainPanels();
-
-            switch (PanelToShow)
-            {
-                case "AddAcountPanel":
-                    AddAcountPanel.Visible = true;
-                    break;
-
-                case "ViewAccouts":
-                    ViewAccountsPanel.Visible = true;
-                    break;
-            }
         }
 
         private void ClearAllButtonSelectPanels()
@@ -51,6 +40,7 @@ namespace PasswordManager
         {
             ViewAccountsPanel.Visible = false;
             AddAcountPanel.Visible = false;
+            SettingsPanel.Visible = false;
         }
         #region Button Click Events
         private void AddAccountButton_Click(object sender, EventArgs e)
@@ -83,7 +73,7 @@ namespace PasswordManager
             ClearAllMainPanels();
             ClearAllButtonSelectPanels();
             SettingsButtonSelected.Visible = true;
-            AddAcountPanel.Visible = true;
+            SettingsPanel.Visible = true;
         }
 
         private void LoadDatabaseButton_Click(object sender, EventArgs e)
@@ -91,7 +81,7 @@ namespace PasswordManager
             ClearAllMainPanels();
             ClearAllButtonSelectPanels();
             LoadDatabaseButtonSelected.Visible = true;
-            AddAcountPanel.Visible = true;
+            //LoadDatabasePanel.Visible = true;
         }
 
         private void SaveDatabaseButton_Click(object sender, EventArgs e)
@@ -99,7 +89,7 @@ namespace PasswordManager
             ClearAllMainPanels();
             ClearAllButtonSelectPanels();
             SaveDatabaseButtonSelected.Visible = true;
-            AddAcountPanel.Visible = true;
+            //SaveDatabasePanel.Visible = true;
         }
 
         private void QuitButton_Click(object sender, EventArgs e)
@@ -107,7 +97,7 @@ namespace PasswordManager
             ClearAllMainPanels();
             ClearAllButtonSelectPanels();
             QuitButtonSelected.Visible = true;
-            AddAcountPanel.Visible = true;
+            
         }
         #endregion
 
@@ -182,14 +172,33 @@ namespace PasswordManager
             }
         }
         #endregion
-        #region ViewAccounts Panel
+
+        #region Settings Panel
         private void ApplySettingsButton_Click(object sender, EventArgs e)
         {
             var tmp = Crypto.Hash(MasterPassword.Text);
 
             Registry.CurrentUser.CreateSubKey("PasswordManager");
             Registry.SetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "Password", tmp);
+            Registry.SetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "Database", DatabaseLocation.Text);
 
+        }
+        private void DatabaseLocation_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog datafiledlg = new SaveFileDialog
+            {
+                Filter = "Password Manager Database (*.pmd)|*.pmd",
+                FileName = "Database.pmd",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                RestoreDirectory = true
+            };
+            DialogResult result;
+
+            result = datafiledlg.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                DatabaseLocation.Text = datafiledlg.FileName;
+            }
         }
         #endregion
     }

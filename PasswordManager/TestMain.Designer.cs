@@ -67,6 +67,9 @@
             this.ApplySettingsButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.MasterPassword = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.DatabaseLocation = new System.Windows.Forms.TextBox();
+            this.DatabaseLocationButton = new System.Windows.Forms.Button();
             this.buttonPanel.SuspendLayout();
             this.ViewAccountsPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -435,6 +438,9 @@
             // 
             // SettingsPanel
             // 
+            this.SettingsPanel.Controls.Add(this.DatabaseLocationButton);
+            this.SettingsPanel.Controls.Add(this.DatabaseLocation);
+            this.SettingsPanel.Controls.Add(this.label8);
             this.SettingsPanel.Controls.Add(this.ApplySettingsButton);
             this.SettingsPanel.Controls.Add(this.label7);
             this.SettingsPanel.Controls.Add(this.MasterPassword);
@@ -457,7 +463,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(81, 69);
+            this.label7.Location = new System.Drawing.Point(81, 70);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(131, 17);
             this.label7.TabIndex = 1;
@@ -465,10 +471,38 @@
             // 
             // MasterPassword
             // 
-            this.MasterPassword.Location = new System.Drawing.Point(81, 92);
+            this.MasterPassword.Location = new System.Drawing.Point(81, 90);
             this.MasterPassword.Name = "MasterPassword";
             this.MasterPassword.Size = new System.Drawing.Size(257, 22);
             this.MasterPassword.TabIndex = 0;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(81, 160);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(144, 17);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Database Location";
+            // 
+            // DatabaseLocation
+            // 
+            this.DatabaseLocation.Location = new System.Drawing.Point(81, 180);
+            this.DatabaseLocation.Name = "DatabaseLocation";
+            this.DatabaseLocation.ReadOnly = true;
+            this.DatabaseLocation.Size = new System.Drawing.Size(257, 22);
+            this.DatabaseLocation.TabIndex = 4;
+            // 
+            // DatabaseLocationButton
+            // 
+            this.DatabaseLocationButton.Location = new System.Drawing.Point(344, 180);
+            this.DatabaseLocationButton.Name = "DatabaseLocationButton";
+            this.DatabaseLocationButton.Size = new System.Drawing.Size(47, 22);
+            this.DatabaseLocationButton.TabIndex = 5;
+            this.DatabaseLocationButton.Text = ". . .";
+            this.DatabaseLocationButton.UseVisualStyleBackColor = true;
+            this.DatabaseLocationButton.Click += new System.EventHandler(this.DatabaseLocation_Click);
             // 
             // MainDialog
             // 
@@ -545,5 +579,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox MasterPassword;
         private System.Windows.Forms.Button ApplySettingsButton;
+        private System.Windows.Forms.Button DatabaseLocationButton;
+        private System.Windows.Forms.TextBox DatabaseLocation;
+        private System.Windows.Forms.Label label8;
     }
 }

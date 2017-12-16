@@ -17,7 +17,7 @@ namespace PasswordManager
             if (Registry.GetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "Password", null) == null)
             {
                 Registry.CurrentUser.CreateSubKey("PasswordManager");
-                Application.Run(new MainDialog("Settings"));
+                Application.Run(new MainDialog());
                 return;
             }
             else
@@ -29,7 +29,7 @@ namespace PasswordManager
                 if (result == DialogResult.OK)
                 {
                     // login was successful
-                    Application.Run(new MainDialog("ViewAccounts"));
+                    Application.Run(new MainDialog());
                     return;
                 }
             }

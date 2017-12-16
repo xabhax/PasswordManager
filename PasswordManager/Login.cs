@@ -1,12 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PasswordManager
@@ -23,19 +16,18 @@ namespace PasswordManager
             string hash = Registry.GetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "Password", null).ToString();
             var tmp = Crypto.Verify(MasterPassword.Text, hash);
 
-            if (tmp == true)
+            switch (tmp)
             {
-                MessageBox.Show("Right");
-            }
-            else
-            {
-                MessageBox.Show("Wrong");
+                case true:
+                    DialogResult = DialogResult.OK;
+                    break;
+
+                default:
+                    this.Close();
+                    break;
             }
         }
 
-        private void QuitButton(object sender, EventArgs e)
-        {
-
-        }
+        private void QuitButton(object sender, EventArgs e) => Close();
     }
 }

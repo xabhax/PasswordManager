@@ -48,6 +48,7 @@
             // 
             this.MasterPassword.Location = new System.Drawing.Point(103, 89);
             this.MasterPassword.Name = "MasterPassword";
+            this.MasterPassword.PasswordChar = '#';
             this.MasterPassword.Size = new System.Drawing.Size(257, 22);
             this.MasterPassword.TabIndex = 2;
             // 
