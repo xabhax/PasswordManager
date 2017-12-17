@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace PasswordManager
@@ -13,7 +12,7 @@ namespace PasswordManager
 
         private void LoginButton(object sender, EventArgs e)
         {
-            string hash = Registry.GetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "Password", null).ToString();
+            string hash = RegistryHelper.GetKey("Password");
             var tmp = Crypto.Verify(MasterPassword.Text, hash);
 
             switch (tmp)

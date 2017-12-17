@@ -28,31 +28,6 @@ namespace PasswordManager
             return GetStengthText(GetPasswordScore(username, password));
         }
 
-        public Color GetPasswordColor(string username, string password)
-        {
-            int result = GetPasswordScore(username, password);
-            if (result == 0)
-            {
-                return Color.Red;
-            }
-            else if (result < 2)
-            {
-                return Color.Red;
-            }
-            else if (result < 45)
-            {
-                return Color.LightYellow;
-            }
-            else if (result < 75)
-            {
-                return Color.YellowGreen;
-            }
-            else
-            {
-                return Color.Green;
-            }
-        }
-
         public int GetPasswordScore(string username, string password)
         {
             int score = 0;

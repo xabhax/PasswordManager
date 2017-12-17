@@ -1,5 +1,5 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,6 +42,7 @@ namespace PasswordManager
             AddAcountPanel.Visible = false;
             SettingsPanel.Visible = false;
         }
+
         #region Button Click Events
         private void AddAccountButton_Click(object sender, EventArgs e)
         {
@@ -140,9 +141,7 @@ namespace PasswordManager
         }
         private void PasswordInput_TextChanged(object sender, EventArgs e)
         {
-            int x = PasswordStregth.Instance.GetPasswordScore(UsernameInput.Text, PasswordInput.Text);
             string str = PasswordStregth.Instance.GetPasswordStrength(UsernameInput.Text, PasswordInput.Text);
-            Color col = PasswordStregth.Instance.GetPasswordColor(UsernameInput.Text, PasswordInput.Text);
 
             switch (str)
             {
@@ -178,10 +177,11 @@ namespace PasswordManager
         {
             var tmp = Crypto.Hash(MasterPassword.Text);
 
-            Registry.CurrentUser.CreateSubKey("PasswordManager");
-            Registry.SetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "Password", tmp);
-            Registry.SetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "Database", DatabaseLocation.Text);
+            RegistryHelper.CreateSubKey("PasswordManager");
+            RegistryHelper.SetKeyValue("Password", tmp);
+            RegistryHelper.SetKeyValue("Database", DatabaseLocation.Text);
 
+            File.Create(DatabaseLocation.Text);
         }
         private void DatabaseLocation_Click(object sender, EventArgs e)
         {

@@ -9,15 +9,6 @@ namespace PasswordManager
         public string Username;
         public string Password;
         public string Website;
-        public string Comment;
-
-        public Entry(string uname, string pword, string site, string comment)
-        {
-            this.Username = uname;
-            this.Password = pword;
-            this.Website = site;
-            this.Comment = comment;
-        }
 
         public Entry(string uname, string pword, string site)
         {

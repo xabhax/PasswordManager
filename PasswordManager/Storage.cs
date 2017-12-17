@@ -12,9 +12,16 @@ namespace PasswordManager
         {
             var serializer = new XmlSerializer(typeof(List<Entry>));
 
-            using (var stream = File.OpenWrite(fileName))
+            if (File.Exists(fileName))
             {
-                serializer.Serialize(stream, list);
+                using (var stream = File.OpenWrite(fileName))
+                {
+                    serializer.Serialize(stream, list);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Database doesn't exist", "PasswordManager");
             }
         }
 
@@ -24,13 +31,21 @@ namespace PasswordManager
 
             var serializer = new XmlSerializer(typeof(List<Entry>));
 
-            using (var stream = File.OpenRead(fileName))
+            if (File.Exists(fileName))
             {
-                var other = (List<Entry>)(serializer.Deserialize(stream));
-                tmp.Clear();
-                tmp.AddRange(other);
+                using (var stream = File.OpenRead(fileName))
+                {
+                    var other = (List<Entry>)(serializer.Deserialize(stream));
+                    tmp.Clear();
+                    tmp.AddRange(other);
+                }
             }
-            return tmp;
+            else
+            {
+                MessageBox.Show("Database doesn't exist", "PasswordManager");
+            }
+
+            return tmp;           
         }
     }
 }
