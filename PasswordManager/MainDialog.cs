@@ -15,7 +15,7 @@ namespace PasswordManager
 {
     public partial class MainDialog : Form
     {
-        string DataFile = RegistryHelper.Datafile();
+        string DataFile = RegistryHelper.Datafile;
         List<Entry> Entries = new List<Entry>();
 
         public MainDialog()
