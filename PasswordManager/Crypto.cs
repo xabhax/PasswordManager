@@ -13,6 +13,7 @@ namespace PasswordManager
 {
     public class Crypto
     {
+        #region Text Hashing
         /// <summary>
         /// Size of salt
         /// </summary>
@@ -110,5 +111,6 @@ namespace PasswordManager
             }
             return true;
         }
+        #endregion
     }
 }
