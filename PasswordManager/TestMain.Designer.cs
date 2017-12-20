@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonPanel = new System.Windows.Forms.Panel();
             this.AddAccountButton = new System.Windows.Forms.Button();
             this.QuitButton = new System.Windows.Forms.Button();
@@ -64,17 +65,19 @@
             this.WebsiteInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SettingsPanel = new System.Windows.Forms.Panel();
+            this.DatabaseLocationButton = new System.Windows.Forms.Button();
+            this.DatabaseLocation = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.ApplySettingsButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.MasterPassword = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.DatabaseLocation = new System.Windows.Forms.TextBox();
-            this.DatabaseLocationButton = new System.Windows.Forms.Button();
+            this.erp = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonPanel.SuspendLayout();
             this.ViewAccountsPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.AddAcountPanel.SuspendLayout();
             this.SettingsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonPanel
@@ -377,6 +380,7 @@
             this.Password2Input.Name = "Password2Input";
             this.Password2Input.Size = new System.Drawing.Size(269, 22);
             this.Password2Input.TabIndex = 7;
+            this.Password2Input.TextChanged += new System.EventHandler(this.Password2Input_TextChanged);
             // 
             // label4
             // 
@@ -449,6 +453,34 @@
             this.SettingsPanel.Size = new System.Drawing.Size(810, 561);
             this.SettingsPanel.TabIndex = 4;
             // 
+            // DatabaseLocationButton
+            // 
+            this.DatabaseLocationButton.Location = new System.Drawing.Point(344, 180);
+            this.DatabaseLocationButton.Name = "DatabaseLocationButton";
+            this.DatabaseLocationButton.Size = new System.Drawing.Size(47, 22);
+            this.DatabaseLocationButton.TabIndex = 5;
+            this.DatabaseLocationButton.Text = ". . .";
+            this.DatabaseLocationButton.UseVisualStyleBackColor = true;
+            this.DatabaseLocationButton.Click += new System.EventHandler(this.DatabaseLocation_Click);
+            // 
+            // DatabaseLocation
+            // 
+            this.DatabaseLocation.Location = new System.Drawing.Point(81, 180);
+            this.DatabaseLocation.Name = "DatabaseLocation";
+            this.DatabaseLocation.ReadOnly = true;
+            this.DatabaseLocation.Size = new System.Drawing.Size(257, 22);
+            this.DatabaseLocation.TabIndex = 4;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(81, 160);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(144, 17);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Database Location";
+            // 
             // ApplySettingsButton
             // 
             this.ApplySettingsButton.Location = new System.Drawing.Point(654, 515);
@@ -476,33 +508,10 @@
             this.MasterPassword.Size = new System.Drawing.Size(257, 22);
             this.MasterPassword.TabIndex = 0;
             // 
-            // label8
+            // erp
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(81, 160);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(144, 17);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Database Location";
-            // 
-            // DatabaseLocation
-            // 
-            this.DatabaseLocation.Location = new System.Drawing.Point(81, 180);
-            this.DatabaseLocation.Name = "DatabaseLocation";
-            this.DatabaseLocation.ReadOnly = true;
-            this.DatabaseLocation.Size = new System.Drawing.Size(257, 22);
-            this.DatabaseLocation.TabIndex = 4;
-            // 
-            // DatabaseLocationButton
-            // 
-            this.DatabaseLocationButton.Location = new System.Drawing.Point(344, 180);
-            this.DatabaseLocationButton.Name = "DatabaseLocationButton";
-            this.DatabaseLocationButton.Size = new System.Drawing.Size(47, 22);
-            this.DatabaseLocationButton.TabIndex = 5;
-            this.DatabaseLocationButton.Text = ". . .";
-            this.DatabaseLocationButton.UseVisualStyleBackColor = true;
-            this.DatabaseLocationButton.Click += new System.EventHandler(this.DatabaseLocation_Click);
+            this.erp.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.erp.ContainerControl = this;
             // 
             // MainDialog
             // 
@@ -510,8 +519,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1029, 559);
-            this.Controls.Add(this.SettingsPanel);
             this.Controls.Add(this.ViewAccountsPanel);
+            this.Controls.Add(this.SettingsPanel);
             this.Controls.Add(this.AddAcountPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.AddAccountButtonSelected);
@@ -534,6 +543,7 @@
             this.AddAcountPanel.PerformLayout();
             this.SettingsPanel.ResumeLayout(false);
             this.SettingsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -582,5 +592,6 @@
         private System.Windows.Forms.Button DatabaseLocationButton;
         private System.Windows.Forms.TextBox DatabaseLocation;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ErrorProvider erp;
     }
 }

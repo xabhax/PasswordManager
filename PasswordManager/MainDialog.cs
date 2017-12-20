@@ -1,15 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.Remoting;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.Layout;
 
 namespace PasswordManager
 {
@@ -137,8 +130,10 @@ namespace PasswordManager
             MessageBox.Show("Account Added", "Password Manager");
             AddAcountPanel.Visible = false;
             ViewAccountsPanel.Visible = true;
+            ViewAccountsButtonSelected.Visible = true;
             RefreshListview();
         }
+
         private void PasswordInput_TextChanged(object sender, EventArgs e)
         {
             string str = PasswordStregth.Instance.GetPasswordStrength(UsernameInput.Text, PasswordInput.Text);
@@ -169,6 +164,22 @@ namespace PasswordManager
                     PasswordScore.Text = str;
                     break;
             }
+        }
+
+        private void Password2Input_TextChanged(object sender, EventArgs e)
+        {
+            if (string.Equals(PasswordInput.Text, Password2Input.Text, StringComparison.CurrentCulture))
+            {
+                AddAccount.Enabled = true;
+                erp.SetError(Password2Input, null);
+            }
+            else
+            {
+                erp.SetError(Password2Input, "Passwords don't match.");
+                AddAccount.Enabled = false;
+            }
+
+            AcceptButton = AddAccount.Enabled ? AddAccount : null;
         }
         #endregion
 

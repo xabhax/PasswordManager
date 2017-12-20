@@ -28,5 +28,13 @@ namespace PasswordManager
         }
 
         private void QuitButton(object sender, EventArgs e) => Close();
+
+        private void Password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                LoginButton(null,null);
+            }
+        }
     }
 }
