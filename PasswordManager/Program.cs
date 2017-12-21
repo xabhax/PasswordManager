@@ -16,7 +16,6 @@ namespace PasswordManager
             // Check to see if registry settings are present
             if (!RegistryHelper.CheckFirstRun())
             {
-                RegistryHelper.CreateSubKey("PasswordManager");
                 Application.Run(new MainDialog());
                 return;
             }

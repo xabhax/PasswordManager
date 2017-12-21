@@ -21,7 +21,6 @@ namespace PasswordManager
             string CalculatedMD5 = CalculateMD5(RegistryHelper.Datafile);
 
             return (StoredMD5 == CalculatedMD5) ? true : false;
-
         }
 
         /// <summary>
@@ -60,6 +59,5 @@ namespace PasswordManager
         {
 
         }
-
     }
 }
