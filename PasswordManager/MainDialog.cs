@@ -25,6 +25,7 @@ namespace PasswordManager
         #region Hiding the button highlight panels
         private void ClearAllButtonSelectPanels()
         {
+            // This is very ugly i know.
             AddAccountButtonSelected.Visible = false;
             ViewAccountsButtonSelected.Visible = false;
             EditAccountButtonSelected.Visible = false;
