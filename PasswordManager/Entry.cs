@@ -10,6 +10,12 @@ namespace PasswordManager
         public string Password;
         public string Website;
 
+        /// <summary>
+        /// Data type for the account information list
+        /// </summary>
+        /// <param name="uname">Username</param>
+        /// <param name="pword">Password</param>
+        /// <param name="site">Website</param>
         public Entry(string uname, string pword, string site)
         {
             this.Username = uname;
