@@ -14,10 +14,15 @@ namespace PasswordManager
         public MainDialog()
         {
             InitializeComponent();
+
+            // Hide the tab control header ... stackoverflow help
+            tabControl.Appearance = TabAppearance.FlatButtons;
+            tabControl.ItemSize = new Size(0, 1);
+            tabControl.SizeMode = TabSizeMode.Fixed;
             ClearAllButtonSelectPanels();
-            ClearAllMainPanels();
         }
 
+        #region Hiding the button highlight panels
         private void ClearAllButtonSelectPanels()
         {
             AddAccountButtonSelected.Visible = false;
@@ -28,70 +33,54 @@ namespace PasswordManager
             SaveDatabaseButtonSelected.Visible = false;
             QuitButtonSelected.Visible = false;
         }
-
-        private void ClearAllMainPanels()
-        {
-            ViewAccountsPanel.Visible = false;
-            AddAcountPanel.Visible = false;
-            SettingsPanel.Visible = false;
-        }
+        #endregion
 
         #region Button Click Events
         private void AddAccountButton_Click(object sender, EventArgs e)
         {
-            ClearAllMainPanels();
             ClearAllButtonSelectPanels();
             AddAccountButtonSelected.Visible = true;
-            AddAcountPanel.Visible = true;
+            tabControl.SelectedIndex = 0;
         }
 
         private void ViewAccountsButton_Click(object sender, EventArgs e)
         {
-            ClearAllMainPanels();
             ClearAllButtonSelectPanels();
             ViewAccountsButtonSelected.Visible = true;
-            ViewAccountsPanel.Visible = true;
+            tabControl.SelectedIndex = 1;
             RefreshListview();
         }
 
         private void EditAccountsButton_Click(object sender, EventArgs e)
         {
-            ClearAllMainPanels();
             ClearAllButtonSelectPanels();
             EditAccountButtonSelected.Visible = true;
-            //EditAccountsPanel.Visible = true;
+            tabControl.SelectedIndex = 3;
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
-            ClearAllMainPanels();
             ClearAllButtonSelectPanels();
             SettingsButtonSelected.Visible = true;
-            SettingsPanel.Visible = true;
+            tabControl.SelectedIndex = 2;
         }
 
         private void LoadDatabaseButton_Click(object sender, EventArgs e)
         {
-            ClearAllMainPanels();
             ClearAllButtonSelectPanels();
             LoadDatabaseButtonSelected.Visible = true;
-            //LoadDatabasePanel.Visible = true;
         }
 
         private void SaveDatabaseButton_Click(object sender, EventArgs e)
         {
-            ClearAllMainPanels();
             ClearAllButtonSelectPanels();
             SaveDatabaseButtonSelected.Visible = true;
-            //SaveDatabasePanel.Visible = true;
         }
 
         private void QuitButton_Click(object sender, EventArgs e)
         {
-            ClearAllMainPanels();
             ClearAllButtonSelectPanels();
             QuitButtonSelected.Visible = true;
-            
         }
         #endregion
 
@@ -129,7 +118,8 @@ namespace PasswordManager
             Storage.SerializeEntries(Entries, DataFile);
             MessageBox.Show("Account Added", "Password Manager");
             AddAcountPanel.Visible = false;
-            ViewAccountsPanel.Visible = true;
+            tabControl.Visible = true;
+            AddAccountButtonSelected.Visible = false;
             ViewAccountsButtonSelected.Visible = true;
             RefreshListview();
         }
