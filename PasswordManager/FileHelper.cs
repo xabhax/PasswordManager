@@ -17,10 +17,7 @@ namespace PasswordManager
         /// <returns>True</returns>
         public static bool IsDatabaseValid(string fileName)
         {
-            string StoredMD5 = RegistryHelper.GetKey("MD5");
-            string CalculatedMD5 = CalculateMD5(RegistryHelper.Datafile);
-
-            return (StoredMD5 == CalculatedMD5) ? true : false;
+            return (RegistryHelper.GetKey("MD5") == CalculateMD5(RegistryHelper.Datafile)) ? true : false;
         }
 
         /// <summary>
@@ -40,24 +37,6 @@ namespace PasswordManager
             }
         }
 
-        /// <summary>
-        /// Encrypts the account database
-        /// </summary>
-        /// <param name="fileName">Location of the database</param>
-        /// <param name="key">Key to encrypt the database</param>
-        public static void EncryptDatabase(string fileName, string key)
-        {
 
-        }
-
-        /// <summary>
-        /// Decrypts the account database
-        /// </summary>
-        /// <param name="fileName">Location of the database</param>
-        /// <param name="key">Key to decrypt the password</param>
-        public static void DecryptDatabase(string fileName, string key)
-        {
-
-        }
     }
 }

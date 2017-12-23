@@ -1,6 +1,6 @@
 ﻿namespace PasswordManager
 {
-    partial class MainDialog
+    public partial class MainDialog
     {
         /// <summary>
         /// Required designer variable.

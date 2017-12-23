@@ -31,7 +31,7 @@ namespace PasswordManager
         /// <returns>returns string with registry value</returns>
         public static string GetKey(string RegKey)
         {
-            return  Registry.GetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", RegKey, null).ToString();
+            return Registry.GetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", RegKey, null).ToString();
         }
 
         /// <summary>

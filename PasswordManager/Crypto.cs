@@ -1,29 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Win32;
-using System.Text.RegularExpressions;
-using System.Drawing;
 
 namespace PasswordManager
 {
     public class Crypto
     {
-        #region Text Hashing
-        /// <summary>
-        /// Size of salt
-        /// </summary>
+        private static byte[] salt = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }; // Must be at least eight bytes.  MAKE THIS SALTIER!
+        private static string destinationFilename = "tmp.data";
+        private const int iterations = 10000; // Recommendation is >= 1000.
         private const int SaltSize = 16;
-
-        /// <summary>
-        /// Size of hash
-        /// </summary>
         private const int HashSize = 20;
 
+        #region Text Hashing
         /// <summary>
         /// Creates a hash from a password
         /// </summary>
@@ -112,5 +101,76 @@ namespace PasswordManager
             return true;
         }
         #endregion
+
+        #region Encryption
+        /// <summary>Decrypt a file.</summary>
+        /// <remarks>NB: "Padding is invalid and cannot be removed." is the Universal CryptoServices error.  Make sure the password, salt and iterations are correct before getting nervous.</remarks>
+        /// <param name="sourceFilename">The full path and name of the file to be decrypted.</param>
+        /// <param name="destinationFilename">The full path and name of the file to be output.</param>
+        /// <param name="password">The password for the decryption.</param>
+        /// <param name="salt">The salt to be applied to the password.</param>
+        /// <param name="iterations">The number of iterations Rfc2898DeriveBytes should use before generating the key and initialization vector for the decryption.</param>
+        public static void DecryptDatabase(string sourceFilename, string password)
+        {
+            AesManaged aes = new AesManaged();
+            aes.BlockSize = aes.LegalBlockSizes[0].MaxSize;
+            aes.KeySize = aes.LegalKeySizes[0].MaxSize;
+            Rfc2898DeriveBytes key = new Rfc2898DeriveBytes(password, salt, iterations);
+            aes.Key = key.GetBytes(aes.KeySize / 8);
+            aes.IV = key.GetBytes(aes.BlockSize / 8);
+            aes.Mode = CipherMode.CBC;
+            ICryptoTransform transform = aes.CreateDecryptor(aes.Key, aes.IV);
+
+            using (FileStream destination = new FileStream(destinationFilename, FileMode.CreateNew, FileAccess.Write, FileShare.None))
+            {
+                using (CryptoStream cryptoStream = new CryptoStream(destination, transform, CryptoStreamMode.Write))
+                {
+                    try
+                    {
+                        using (FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
+                        {
+                            source.CopyTo(cryptoStream);
+                        }
+                    }
+                    catch (CryptographicException exception)
+                    {
+                        if (exception.Message == "Padding is invalid and cannot be removed.")
+                            throw new ApplicationException("Universal Microsoft Cryptographic Exception (Not to be believed!)", exception);
+                        else
+                            throw;
+                    }
+                }
+            }
+        }
+
+        /// <summary>Encrypt a file.</summary>
+        /// <param name="sourceFilename">The full path and name of the file to be encrypted.</param>
+        /// <param name="destinationFilename">The full path and name of the file to be output.</param>
+        /// <param name="password">The password for the encryption.</param>
+        /// <param name="salt">The salt to be applied to the password.</param>
+        /// <param name="iterations">The number of iterations Rfc2898DeriveBytes should use before generating the key and initialization vector for the decryption.</param>
+        public void EncryptDatabase(string sourceFilename, string password)
+        {
+            AesManaged aes = new AesManaged();
+            aes.BlockSize = aes.LegalBlockSizes[0].MaxSize;
+            aes.KeySize = aes.LegalKeySizes[0].MaxSize;
+            Rfc2898DeriveBytes key = new Rfc2898DeriveBytes(password, salt, iterations);
+            aes.Key = key.GetBytes(aes.KeySize / 8);
+            aes.IV = key.GetBytes(aes.BlockSize / 8);
+            aes.Mode = CipherMode.CBC;
+            ICryptoTransform transform = aes.CreateEncryptor(aes.Key, aes.IV);
+
+            using (FileStream destination = new FileStream(destinationFilename, FileMode.CreateNew, FileAccess.Write, FileShare.None))
+            {
+                using (CryptoStream cryptoStream = new CryptoStream(destination, transform, CryptoStreamMode.Write))
+                {
+                    using (FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
+                    {
+                        source.CopyTo(cryptoStream);
+                    }
+                }
+            }
+            #endregion
+        }
     }
 }

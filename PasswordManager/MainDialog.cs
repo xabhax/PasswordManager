@@ -89,6 +89,7 @@ namespace PasswordManager
         private void RefreshListview()
         {
             listView.Items.Clear();
+
             Entries = Storage.DeserializeEntries(DataFile);
 
             for (int i = 0; i < Entries.Count; i++)
