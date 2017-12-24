@@ -204,5 +204,30 @@ namespace PasswordManager
             }
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var tmp = ZipHelper.RetrievePassword();
+
+            MessageBox.Show(tmp);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var tmp = FileHelper.CalculateMD5(@"C:\Users\xabha\Desktop\zipfile.dat");
+            RegistryHelper.SetKeyValue("MD5", tmp);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (!FileHelper.IsDatabaseValid(@"C:\Users\xabha\Desktop\zipfile.dat"))
+            {
+                MessageBox.Show("Error in database");
+            }
+            else
+            {
+                MessageBox.Show("Database is valid");
+            }
+        }
     }
 }

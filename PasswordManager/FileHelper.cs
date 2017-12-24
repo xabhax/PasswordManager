@@ -17,7 +17,7 @@ namespace PasswordManager
         /// <returns>True</returns>
         public static bool IsDatabaseValid(string fileName)
         {
-            return (RegistryHelper.GetKey("MD5") == CalculateMD5(RegistryHelper.Datafile)) ? true : false;
+            return (RegistryHelper.GetKey("MD5") == CalculateMD5(RegistryHelper.Zipfile)) ? true : false;
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace PasswordManager
         /// </summary>
         /// <param name="filename">Filename to get md5 has</param>
         /// <returns>The calculated hash of the file given</returns>
-        private static string CalculateMD5(string filename)
+        public static string CalculateMD5(string filename)
         {
             using (var md5 = MD5.Create())
             {

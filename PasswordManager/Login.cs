@@ -19,7 +19,6 @@ namespace PasswordManager
             {
                 case true:
                     DialogResult = DialogResult.OK;
-                    var tmpy = new LoginHelper(MasterPassword.Text);
                     break;
 
                 default:

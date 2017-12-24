@@ -15,6 +15,14 @@ namespace PasswordManager
             }   
         }
 
+        public static string Zipfile
+        {
+            get
+            {
+                return Registry.GetValue("HKEY_CURRENT_USER\\Software\\PasswordManager", "Zipfile", null).ToString();
+            }
+        }  
+
         /// <summary>
         /// Checks for a registry value to determine if this is the first time running
         /// </summary>
