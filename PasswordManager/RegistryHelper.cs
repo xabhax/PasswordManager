@@ -15,6 +15,9 @@ namespace PasswordManager
             }   
         }
 
+        /// <summary>
+        /// Returns the location of the database archive
+        /// </summary>
         public static string Zipfile
         {
             get

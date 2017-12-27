@@ -22,7 +22,7 @@ namespace PasswordManager
             return GetStengthText(GetPasswordScore(username, password));
         }
 
-        public int GetPasswordScore(string username, string password)
+        private int GetPasswordScore(string username, string password)
         {
             int score = 0;
 

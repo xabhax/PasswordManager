@@ -119,10 +119,12 @@ namespace PasswordManager
             Entries.Add(new Entry(UsernameInput.Text, PasswordInput.Text, WebsiteInput.Text));
             Storage.SerializeEntries(Entries, DataFile);
             MessageBox.Show("Account Added", "Password Manager");
+
             AddAcountPanel.Visible = false;
             tabControl.Visible = true;
             AddAccountButtonSelected.Visible = false;
             ViewAccountsButtonSelected.Visible = true;
+
             RefreshListview();
         }
 

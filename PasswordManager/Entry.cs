@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace PasswordManager
 {
     [Serializable]
-    public class Entry
+    sealed public class Entry
     {
         public string Username;
         public string Password;
